@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Quer namorar comigo?</title>
+</head>
+<body>
+    <div class="box">
+        <h1>Quer namorar comigo?</h1>
+        <div class="buttons">
+            <button id="sim" class="button button-1">Sim</button>
+            <button id="nao" class="button button-2">Não</button>
+        </div>
+    </div>
+
+    <script>
+        const naoButton = document.getElementById("nao");
+        const simButton = document.getElementById("sim");
+
+        simButton.addEventListener("click", () => {
+            const gifImg = document.createElement("img");
+            gifImg.src = "./img/sim.gif"
+            gifImg.alt = "GIF";
+            gifImg.style.display = "block";
+            gifImg.style.margin = "auto";
+
+            const centeredDiv = document.createElement("div");
+            centeredDiv.classList.add("centered");
+            centeredDiv.appendChild(gifImg);
+
+            document.body.innerHTML = "";
+            document.body.appendChild(centeredDiv);
+        });
+
+        const handleNao = () => {
+            naoButton.style.position = "fixed";
+
+            const rand = Math.random();
+
+            const randtop = (rand * window.innerHeight) % (window.innerHeight - naoButton.offsetHeight);
+            const randleft = (window.innerWidth * rand * 10) % (window.innerWidth - naoButton.offsetWidth);
+
+            naoButton.style.top = `${randtop}px`;
+            naoButton.style.left = `${randleft}px`;
+        };
+
+        naoButton.addEventListener("click", handleNao);
+        naoButton.addEventListener("mouseover", handleNao);
+    </script>
+
+</body>
+</html>
